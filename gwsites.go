@@ -1,6 +1,6 @@
 package main
 
-import "github.com/davidparkercodes/gwsites/cmd"
+import "github.com/davidparkergw/gwsites/cmd"
 
 func main() {
 	cmd.Execute()
