@@ -16,10 +16,16 @@ limitations under the License.
 package cmd
 
 import (
-	"fmt"
+	"log"
+	"os/exec"
+	"strings"
 
 	"github.com/spf13/cobra"
 )
+
+var urlPath string
+var staging bool
+var admin bool
 
 // loadallCmd represents the loadall command
 var loadallCmd = &cobra.Command{
@@ -32,20 +38,67 @@ Cobra is a CLI library for Go that empowers applications.
 This application is a tool to generate the needed files
 to quickly create a Cobra application.`,
 	Run: func(cmd *cobra.Command, args []string) {
-		fmt.Println("loadall called")
+		runCommand(urlPath, staging)
+
 	},
 }
 
 func init() {
 	rootCmd.AddCommand(loadallCmd)
 
-	// Here you will define your flags and configuration settings.
+	loadallCmd.Flags().StringVarP(&urlPath, "urlPath", "p", "", "URL Path to add to the end of URLs")
+	loadallCmd.Flags().BoolVarP(&staging, "staging", "s", false, "Bool to do staging or not")
+	loadallCmd.Flags().BoolVarP(&admin, "admin", "a", false, "Bool to do admin or not")
+}
 
-	// Cobra supports Persistent Flags which will work for this command
-	// and all subcommands, e.g.:
-	// loadallCmd.PersistentFlags().String("foo", "", "A help for foo")
+func getWebsiteURLS() []string {
+	return []string{
+		"https://www.afsrepair.com/",
+		"https://www.aquaguard.net/",
+		"https://www.bakerswaterproofing.com/",
+		"https://www.completebasementsystems.net/",
+		"https://www.dryprosystems.com/",
+		"https://www.floridafoundationauthority.com/",
+		"https://www.foundationrecoverysystems.com/",
+		"https://www.foundationrepairwesterncolorado.com/",
+		"https://www.drymich.com/",
+		"https://www.dripfree.com/",
+		"https://www.indianafoundation.com/",
+		"https://www.innovativebasementauthority.com/",
+		"https://www.itgbasements.com/",
+		"https://www.fixmyfoundation.com/",
+		"https://www.ohiobasementauthority.com/",
+		"https://www.ohiobasementsystems.com/",
+		"https://www.tarheelbasementsystems.com/",
+		"https://staging.groundworkscompanies.com/",
+	}
+}
 
-	// Cobra supports local flags which will only run when this command
-	// is called directly, e.g.:
-	// loadallCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
+func runCommand(urlPath string, staging bool) {
+	websiteURLS := getWebsiteURLS()
+
+	for _, url := range websiteURLS {
+		// Staging?
+		if staging {
+			url = strings.Replace(url, "www", "staging", 1)
+		}
+
+		// Admin?
+		if admin {
+			url = url + "wp-admin/"
+		}
+
+		// Add URL Path?
+		if urlPath != "" {
+			url = url + urlPath
+		}
+
+		// fmt.Println(url)
+
+		// Load Websites
+		err := exec.Command("open", url).Start()
+		if err != nil {
+			log.Fatal(err)
+		}
+	}
 }

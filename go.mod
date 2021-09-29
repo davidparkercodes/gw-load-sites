@@ -1,4 +1,4 @@
-module github.com/davidparkercodes/gw-load-sites
+module github.com/davidparkercodes/gwsites
 
 go 1.17
 
