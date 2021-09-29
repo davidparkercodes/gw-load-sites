@@ -1,14 +1,9 @@
 package main
 
 import (
-	"flag"
-	"fmt"
+	"github.com/davidparkercodes/gwsites/cmd"
 )
 
 func main() {
-
-	aaa := flag.String("example", "defaultValue", " Help text.")
-	flag.Parse()
-
-	fmt.Println(*aaa)
+	cmd.Execute()
 }
