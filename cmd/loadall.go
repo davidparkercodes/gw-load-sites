@@ -50,6 +50,7 @@ func getWebsiteURLS() []string {
 		"https://www.indianafoundation.com/",
 		"https://www.innovativebasementauthority.com/",
 		"https://www.itgbasements.com/",
+		"https://www.jeswork.com/",
 		"https://www.fixmyfoundation.com/",
 		"https://www.ohiobasementauthority.com/",
 		"https://www.ohiobasementsystems.com/",
