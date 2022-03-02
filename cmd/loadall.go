@@ -38,8 +38,10 @@ func init() {
 func getWebsiteURLS() []string {
 	return []string{
 		"https://www.afsrepair.com/",
+		"https://www.alphafoundations.com/",
 		"https://www.aquaguard.net/",
 		"https://www.bakerswaterproofing.com/",
+		"https://www.basementsbybq.com/",
 		"https://www.completebasementsystems.net/",
 		"https://www.dryprosystems.com/",
 		"https://www.floridafoundationauthority.com/",
@@ -49,13 +51,11 @@ func getWebsiteURLS() []string {
 		"https://www.dripfree.com/",
 		"https://www.indianafoundation.com/",
 		"https://www.innovativebasementauthority.com/",
-		"https://www.itgbasements.com/",
 		"https://www.jeswork.com/",
 		"https://www.fixmyfoundation.com/",
 		"https://www.ohiobasementauthority.com/",
 		"https://www.ohiobasementsystems.com/",
 		"https://www.tarheelbasementsystems.com/",
-		"https://staging.groundworkscompanies.com/",
 	}
 }
 
